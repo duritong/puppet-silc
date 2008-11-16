@@ -5,6 +5,10 @@ class silc {
         openbsd: { include silc::openbsd }
         default: { include silc::base }
     }
+
+    if $use_nagios {
+        include silc::nagios
+    }
 }
 
 class silc::base {
