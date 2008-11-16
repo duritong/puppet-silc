@@ -27,6 +27,13 @@ class silc::base {
             notify => Service['silc-server'],
             require => Package['silc-server'],
             owner => silc, group => silc, mode => 0600;
+        '/etc/silcd/motd.txt':
+            source => [ "puppet://$server/files/silc/server/${fqdn}/motd.txt",
+                        "puppet://$server/files/silc/server/motd.txt",
+                        "puppet://$server/silc/server/motd.txt" ],
+            notify => Service['silc-server'],
+            require => Package['silc-server'],
+            owner => silc, group => silc, mode => 0600;
     }
 
     service{'silc-server':
@@ -43,6 +50,10 @@ class silc::openbsd inherits silc::base {
         group => '_silc',
     }
     File['/etc/silcd/silcalgs.conf']{
+        owner => '_silc',
+        group => '_silc',
+    }
+    File['/etc/silcd/motd.txt']{
         owner => '_silc',
         group => '_silc',
     }
