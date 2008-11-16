@@ -46,16 +46,16 @@ class silc::base {
 
 class silc::openbsd inherits silc::base {
     File['/etc/silcd/silcd.conf']{
-        owner => '_silc',
-        group => '_silc',
+        owner => '_silcd',
+        group => '_silcd',
     }
     File['/etc/silcd/silcalgs.conf']{
-        owner => '_silc',
-        group => '_silc',
+        owner => '_silcd',
+        group => '_silcd',
     }
     File['/etc/silcd/motd.txt']{
-        owner => '_silc',
-        group => '_silc',
+        owner => '_silcd',
+        group => '_silcd',
     }
 
     Service['silc-server']{
