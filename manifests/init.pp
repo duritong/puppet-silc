@@ -66,6 +66,7 @@ class silc::openbsd inherits silc::base {
         restart => '/bin/kill -HUP `/bin/cat /var/run/silcd.pid`',
         stop => '/bin/kill `/bin/cat /var/run/silcd.pid`',
         start => '/usr/local/sbin/silcd',
+        pattern => 'silcd',
         hasstatus => false,
     }
 }
