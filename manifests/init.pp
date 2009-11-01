@@ -19,22 +19,22 @@ class silc::base {
     file{
         '/etc/silcd/silcd.conf':
             source => [ "puppet://$server/files/silc/server/${fqdn}/silcd.conf",
-                        "puppet://$server/files/silc/server/silcd.conf",
-                        "puppet://$server/silc/server/silcd.conf" ],
+                        "puppet://$server/files/silc/server/modules/silcd.conf",
+                        "puppet://$server/modules/silc/server/silcd.conf" ],
             notify => Service['silc-server'],
             require => Package['silc-server'],
             owner => silc, group => silc, mode => 0600;
         '/etc/silcd/silcalgs.conf':
             source => [ "puppet://$server/files/silc/server/${fqdn}/silcalgs.conf",
-                        "puppet://$server/files/silc/server/silcalgs.conf",
-                        "puppet://$server/silc/server/silcalgs.conf" ],
+                        "puppet://$server/files/silc/server/modules/silcalgs.conf",
+                        "puppet://$server/modules/silc/server/silcalgs.conf" ],
             notify => Service['silc-server'],
             require => Package['silc-server'],
             owner => silc, group => silc, mode => 0600;
         '/etc/silcd/motd.txt':
             source => [ "puppet://$server/files/silc/server/${fqdn}/motd.txt",
                         "puppet://$server/files/silc/server/motd.txt",
-                        "puppet://$server/silc/server/motd.txt" ],
+                        "puppet://$server/modules/silc/server/motd.txt" ],
             notify => Service['silc-server'],
             require => Package['silc-server'],
             owner => silc, group => silc, mode => 0600;
