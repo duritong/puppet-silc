@@ -20,14 +20,14 @@ class silc::base {
         '/etc/silcd/silcd.conf':
             source => [ "puppet://$server/files/silc/server/${fqdn}/silcd.conf",
                         "puppet://$server/files/silc/server/modules/silcd.conf",
-                        "puppet://$server/modules/silc/server/silcd.conf" ],
+                        "puppet://$server/modules/silc/server/modules/silcd.conf" ],
             notify => Service['silc-server'],
             require => Package['silc-server'],
             owner => silc, group => silc, mode => 0600;
         '/etc/silcd/silcalgs.conf':
             source => [ "puppet://$server/files/silc/server/${fqdn}/silcalgs.conf",
                         "puppet://$server/files/silc/server/modules/silcalgs.conf",
-                        "puppet://$server/modules/silc/server/silcalgs.conf" ],
+                        "puppet://$server/modules/silc/server/modules/silcalgs.conf" ],
             notify => Service['silc-server'],
             require => Package['silc-server'],
             owner => silc, group => silc, mode => 0600;
