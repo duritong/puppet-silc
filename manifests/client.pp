@@ -1,7 +1,8 @@
 # manifests/client.pp
 
 class silc::client {
-    package{'silc-client':
-        ensure => present,
-    }
+  case $operatingsystem {
+    openbsd: { include silc::client::openbsd }
+    default: { include silc::client::base }
+  }
 }
