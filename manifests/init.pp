@@ -1,4 +1,5 @@
 class silc {
+  include silc::client
   case $operatingsystem {
     openbsd: { include silc::openbsd }
     default: { include silc::base }
