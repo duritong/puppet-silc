@@ -1,8 +1,10 @@
-# manifests/client.pp
-
 class silc::client {
   case $operatingsystem {
-    openbsd: { include silc::client::openbsd }
+    debian: { include silc::client::debian }
     default: { include silc::client::base }
+  }
+
+  if $use_shorewall {
+    include shorewall::rules::out::silc
   }
 }

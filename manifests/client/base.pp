@@ -1,5 +1,5 @@
 class silc::client::base {
-  package{'silc':
+  package{'silc-client':
     ensure => present,
   }
 }
