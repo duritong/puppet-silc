@@ -1,12 +1,14 @@
-# manifests/init.pp
-
 class silc {
-    case $operatingsystem {
-        openbsd: { include silc::openbsd }
-        default: { include silc::base }
-    }
+  case $operatingsystem {
+    openbsd: { include silc::openbsd }
+    default: { include silc::base }
+  }
 
-    if $use_nagios {
-        include silc::nagios
-    }
+  if $use_nagios {
+    include silc::nagios
+  }
+
+  if $use_shorewall {
+    include shorewall::rules::silcd
+  }
 }
