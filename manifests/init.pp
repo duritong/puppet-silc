@@ -1,15 +1,15 @@
 class silc {
   include silc::client
-  case $operatingsystem {
+  case $::operatingsystem {
     openbsd: { include silc::openbsd }
     default: { include silc::base }
   }
 
-  if $use_nagios {
+  if hiera('use_nagios',false) {
     include silc::nagios
   }
 
-  if $use_shorewall {
+  if hiera('use_shorewall',false) {
     include shorewall::rules::silcd
   }
 }

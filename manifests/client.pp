@@ -1,10 +1,10 @@
 class silc::client {
-  case $operatingsystem {
+  case $::operatingsystem {
     debian: { include silc::client::debian }
     default: { include silc::client::base }
   }
 
-  if $use_shorewall {
+  if hiera('use_shorewall',false) {
     include shorewall::rules::out::silc
   }
 }
