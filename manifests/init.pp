@@ -1,15 +1,21 @@
-class silc {
-  include silc::client
+class silc(
+  $manage_nagios = false,
+  $manage_shorewall = false,
+  $nagios_host = $::fqdn
+) {
+  class{'silc::client':
+    manage_shorewall => $manage_shorewall
+  }
   case $::operatingsystem {
     openbsd: { include silc::openbsd }
     default: { include silc::base }
   }
 
-  if hiera('use_nagios',false) {
+  if $manage_nagios {
     include silc::nagios
   }
 
-  if hiera('use_shorewall',false) {
+  if $manage_shorewall {
     include shorewall::rules::silcd
   }
 }
