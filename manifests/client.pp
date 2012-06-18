@@ -1,5 +1,5 @@
 class silc::client(
-  $manage_shorewall = false,
+  $manage_shorewall = false
 ) {
   case $::operatingsystem {
     debian: { include silc::client::debian }
